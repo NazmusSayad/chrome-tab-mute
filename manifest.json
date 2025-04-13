@@ -8,10 +8,14 @@
   "background": {
     "service_worker": "dist/index.js"
   },
+  "icons": {
+    "128": "dist/images/active-128.png"
+  },
   "action": {
     "default_title": "Mute/Unmute Tab",
     "default_icon": "dist/images/normal-white-128.png"
   },
+
   "web_accessible_resources": [
     {
       "resources": ["dist/*"],

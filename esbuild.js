@@ -3,6 +3,8 @@ import path from 'path'
 import sharp from 'sharp'
 import esbuild from 'esbuild'
 
+fs.rmSync('./dist', { recursive: true, force: true })
+
 const imagesDir = path.resolve('./images/icons')
 const outputDir = path.resolve('./dist/images')
 
@@ -10,7 +12,7 @@ if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true })
 }
 
-const sizes = [16, 32, 48, 128]
+const sizes = [128]
 const files = fs.readdirSync(imagesDir)
 const pngFiles = files.filter((file) => file.endsWith('.png'))
 
