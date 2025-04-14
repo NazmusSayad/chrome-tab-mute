@@ -1,9 +1,9 @@
 export default {
   name: 'Chrome Tab Mute',
-  version: '1.0.1',
+  version: '1.0.2',
   manifest_version: 3,
   description: 'Mute or unmute tabs with one click',
-  permissions: ['tabs', 'contextMenus', 'storage', 'offscreen'],
+  permissions: ['tabs', 'storage', 'offscreen'],
   host_permissions: ['<all_urls>'],
 
   background: {
