@@ -1,12 +1,15 @@
 {
   "type": "module",
   "scripts": {
-    "build": "node ./esbuild.js",
+    "dev": "tsx ./setup/esbuild.js --watch",
+    "build": "tsx ./setup/esbuild.js",
     "tsc": "tsc --watch --noEmit"
   },
   "devDependencies": {
+    "@types/archiver": "^6.0.3",
     "@types/chrome": "^0.0.315",
     "@types/node": "^22.14.1",
+    "archiver": "^7.0.1",
     "esbuild": "^0.25.2",
     "sharp": "^0.34.1",
     "typescript": "^5.8.3"

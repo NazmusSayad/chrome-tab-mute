@@ -1,4 +1,4 @@
-import { MUTED_ICON, ACTIVE_ICON, UNMUTED_ICON } from './icons'
+import { getMutedIcon, getActiveIcon, getUnmutedIcon } from './icons'
 
 export function updateMuteState(tab: chrome.tabs.Tab) {
   const shouldMute = !tab.mutedInfo?.muted
@@ -14,7 +14,7 @@ export async function updateTabIcon(tab: chrome.tabs.Tab, shouldMute: boolean) {
   }
 
   chrome.action.setIcon({
-    path: await MUTED_ICON(),
+    path: await getMutedIcon(),
     tabId,
   })
 }
@@ -23,6 +23,6 @@ export async function updateTabIconOnAudio(
   isActive: boolean | undefined,
   tabId: number
 ) {
-  const icons = await (isActive ? ACTIVE_ICON() : UNMUTED_ICON())
+  const icons = await (isActive ? getActiveIcon() : getUnmutedIcon())
   chrome.action.setIcon({ path: icons, tabId })
 }

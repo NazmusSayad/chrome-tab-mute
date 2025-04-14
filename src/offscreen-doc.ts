@@ -1,4 +1,4 @@
-export async function execOffscreenDocument(): Promise<void> {
+export async function execOffscreenDocument() {
   const exists = await chrome.offscreen.hasDocument()
   if (!exists) {
     await chrome.offscreen.createDocument({

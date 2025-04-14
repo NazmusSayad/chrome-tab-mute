@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "module": "AMD",
     "outDir": "./dist",
 
     "moduleResolution": "node",
