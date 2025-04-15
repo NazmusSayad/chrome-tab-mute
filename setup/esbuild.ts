@@ -49,7 +49,7 @@ const esbuildCtx = await esbuild.context({
   bundle: true,
   minify: !isWatchMode,
   sourcemap: isWatchMode,
-
+  pure: ['console.log'],
   publicPath: PUBLIC_DIR,
 })
 

@@ -1,4 +1,4 @@
-export async function toggleCurrentTabMute(targetTab?: chrome.tabs.Tab) {
+export async function toggleTabMute(targetTab?: chrome.tabs.Tab) {
   const [tab] = targetTab
     ? [targetTab]
     : await chrome.tabs.query({ currentWindow: true, active: true })
