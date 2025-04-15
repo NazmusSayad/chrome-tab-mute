@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "ES6",
     "outDir": "./dist",
+    "strict": true,
 
     "moduleResolution": "node",
     "lib": ["ESNext", "DOM"],

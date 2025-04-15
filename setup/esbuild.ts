@@ -6,6 +6,8 @@ import archiver from './archiver'
 import { IMAGES_DIR, OUTPUT_DIR, OUTPUT_IMAGES_DIR, PUBLIC_DIR } from './config'
 import manifest from './manifest'
 
+const isWatchMode = process.argv.includes('--watch')
+
 fs.rmSync(OUTPUT_DIR, { recursive: true, force: true })
 fs.mkdirSync(OUTPUT_DIR, { recursive: true })
 fs.mkdirSync(path.join(OUTPUT_IMAGES_DIR), { recursive: true })
@@ -44,13 +46,13 @@ const esbuildCtx = await esbuild.context({
   platform: 'neutral',
   target: 'es6',
   format: 'esm',
-  minify: true,
   bundle: true,
+  minify: !isWatchMode,
+  sourcemap: isWatchMode,
 
   publicPath: PUBLIC_DIR,
 })
 
-const isWatchMode = process.argv.includes('--watch')
 if (isWatchMode) {
   await esbuildCtx.rebuild()
   console.log('Build completed')

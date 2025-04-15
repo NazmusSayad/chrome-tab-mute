@@ -16,17 +16,19 @@ function getIconSet(isDarkTheme: boolean): ExtensionIcons {
   }
 }
 
-export async function getMutedIcon() {
+async function isDarkTheme() {
   const result = await chrome.storage.session.get('isDarkTheme')
-  return getIconSet(result.isDarkTheme).muted
+  return Boolean(result?.isDarkTheme)
+}
+
+export async function getMutedIcon() {
+  return getIconSet(await isDarkTheme()).muted
 }
 
 export async function getUnmutedIcon() {
-  const result = await chrome.storage.session.get('isDarkTheme')
-  return getIconSet(result.isDarkTheme).unmuted
+  return getIconSet(await isDarkTheme()).unmuted
 }
 
 export async function getActiveIcon() {
-  const result = await chrome.storage.session.get('isDarkTheme')
-  return getIconSet(result.isDarkTheme).active
+  return getIconSet(await isDarkTheme()).active
 }
