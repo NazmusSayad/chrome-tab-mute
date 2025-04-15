@@ -1,3 +1,4 @@
+import { execSync } from 'child_process'
 import esbuild from 'esbuild'
 import fs from 'fs'
 import path from 'path'
@@ -5,6 +6,8 @@ import sharp from 'sharp'
 import archiver from './archiver'
 import { IMAGES_DIR, OUTPUT_DIR, OUTPUT_IMAGES_DIR, PUBLIC_DIR } from './config'
 import manifest from './manifest'
+
+execSync('npx tsc --noEmit', { stdio: 'inherit' })
 
 const isWatchMode = process.argv.includes('--watch')
 
@@ -50,7 +53,6 @@ const esbuildCtx = await esbuild.context({
   platform: 'neutral',
   minify: !isWatchMode,
   sourcemap: isWatchMode,
-  publicPath: PUBLIC_DIR,
 })
 
 if (isWatchMode) {
