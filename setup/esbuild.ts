@@ -43,13 +43,13 @@ fs.writeFileSync(
 const esbuildCtx = await esbuild.context({
   entryPoints: ['./src/index.ts'],
   outfile: path.join(OUTPUT_DIR, 'index.js'),
-  platform: 'neutral',
+  drop: isWatchMode ? [] : ['console', 'debugger'],
+  bundle: true,
   target: 'es6',
   format: 'esm',
-  bundle: true,
+  platform: 'neutral',
   minify: !isWatchMode,
   sourcemap: isWatchMode,
-  pure: ['console.log'],
   publicPath: PUBLIC_DIR,
 })
 
