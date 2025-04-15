@@ -4,15 +4,26 @@ import fs from 'fs'
 import path from 'path'
 import sharp from 'sharp'
 import archiver from './archiver'
-import { IMAGES_DIR, OUTPUT_DIR, OUTPUT_IMAGES_DIR, PUBLIC_DIR } from './config'
+import {
+  IMAGES_DIR,
+  OUTPUT_DIR,
+  OUTPUT_IMAGES_DIR,
+  OUTPUT_ZIP_DIR,
+  PUBLIC_DIR,
+} from './config'
 import manifest from './manifest'
 
 execSync('npx tsc --noEmit', { stdio: 'inherit' })
 
 const isWatchMode = process.argv.includes('--watch')
 
+// Clean up previous builds
 fs.rmSync(OUTPUT_DIR, { recursive: true, force: true })
+fs.rmSync(OUTPUT_ZIP_DIR, { recursive: true, force: true })
+
+// Create output directories
 fs.mkdirSync(OUTPUT_DIR, { recursive: true })
+fs.mkdirSync(OUTPUT_ZIP_DIR, { recursive: true })
 fs.mkdirSync(path.join(OUTPUT_IMAGES_DIR), { recursive: true })
 
 // Resize images
@@ -70,7 +81,7 @@ if (isWatchMode) {
 
   const archive = await archiver(
     OUTPUT_DIR,
-    `chrome-extension-tab-mute-${manifest.version}.zip`
+    path.join(OUTPUT_ZIP_DIR, `chrome-extension-tab-mute.zip`)
   )
 
   console.log(`✔️  Zipped ${archive.pointer()}bytes`)
