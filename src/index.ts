@@ -18,6 +18,7 @@ chrome.runtime.onMessage.addListener(
 
 chrome.tabs.onActivated.addListener(async ({ tabId }: { tabId: number }) => {
   try {
+    console.log('# Tab Activated', tabId, '\n\n')
     disposeTabInfo(tabId)
 
     const tab = await chrome.tabs.get(tabId)
@@ -35,6 +36,7 @@ chrome.tabs.onUpdated.addListener(async (_, changeInfo, tab) => {
 
     if ('status' in changeInfo) {
       if (tab.id && changeInfo.status === 'loading') {
+        console.log('Tab loading and disposing', tab.id)
         disposeTabInfo(tab.id)
       }
 
