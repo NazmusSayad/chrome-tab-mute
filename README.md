@@ -1,9 +1,8 @@
-# Mute or unmute tabs with one click
+# **Mute Tab Instead of Site — Chrome Tab Mute**
 
-**Mute Tab Instead of Site — Chrome Tab Mute**
+**Bring back the ability to mute individual tabs with a single click!**
 
-Bring back the ability to mute individual tabs with a single click!  
-This lightweight extension lets you:
+**This lightweight extension lets you:**
 
 - Instantly mute/unmute any tab  
 - Use a customizable keyboard shortcut  
@@ -13,6 +12,6 @@ This lightweight extension lets you:
 ✅ Simple. Fast. No bloat.  
 🚫 No more muting entire sites when you just want one tab silent.
 
-Once a native Chrome feature — now back by popular demand!
+### Once a native Chrome feature — now back by popular demand!
 
 ![Thumbnail](https://github.com/NazmusSayad/chrome.tab-mute/blob/main/thumbnail.jpg?raw=true)
